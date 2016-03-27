@@ -1,0 +1,12 @@
+{
+    "name": "tyurderi/table-manager",
+    "description": "A mysql table manager which helps you to create, drop or edit tables.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tyurderi",
+            "email": "tyurderi@yahoo.de"
+        }
+    ],
+    "require": {}
+}
