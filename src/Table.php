@@ -22,7 +22,10 @@ class Table
 
     public function addField($name, Field\Type\TypeInterface $type)
     {
-        $this->fields[] = new Field\Field($name, $type);
+        $field          = new Field\Field($name, $type);
+        $this->fields[] = $field;
+
+        return $field;
     }
 
     public function getField($name)
