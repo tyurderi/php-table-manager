@@ -8,7 +8,7 @@ use TM\Table\Manager;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $table = new Table('user');
-$table->addField('id', Type::custom('int(11)'));
+$table->addField('id', Type::int(11));
 $table->addField('username', Type::varChar(32));
 
 $table->getField('id')
