@@ -8,5 +8,12 @@
             "email": "tyurderi@yahoo.de"
         }
     ],
-    "require": {}
+    "require": {
+        "tyurderi/php-file-builder": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TM\\Table\\": "src/"
+        }
+    }
 }

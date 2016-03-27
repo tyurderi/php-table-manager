@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "4554fa4df57f365ce4a5b284290f55f1",
+    "content-hash": "c6f73aaf05d531fa8732f238e49ea429",
+    "packages": [
+        {
+            "name": "tyurderi/php-file-builder",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tyurderi/php-file-builder.git",
+                "reference": "d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tyurderi/php-file-builder/zipball/d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80",
+                "reference": "d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WCKZ\\Generator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tyurd",
+                    "email": "tyurderi@yahoo.de"
+                }
+            ],
+            "description": "A small helper class to generate files.",
+            "time": "2016-03-25 11:10:43"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
