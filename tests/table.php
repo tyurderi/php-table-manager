@@ -18,4 +18,10 @@ $table->getField('id')
 $manager = new Manager();
 $query   = $manager->createQuery($table);
 
-echo $query;
+echo $query, PHP_EOL;
+
+$query = $manager->alterTable('user')
+        ->addField(new Field('password', Type::varChar(32)))
+        ->getQuery();
+
+echo $query, PHP_EOL;

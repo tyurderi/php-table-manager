@@ -2,6 +2,8 @@
 
 namespace TM\Table\Field;
 
+use WCKZ\Generator\FileBuilder;
+
 class Field
 {
 
@@ -145,6 +147,57 @@ class Field
         $this->primaryKey = $primaryKey;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        $query = new FileBuilder();
+        $query->add('`%s` %s', $this->getName(), $this->getType());
+
+        if($encoding = $this->getEncoding())
+        {
+            $query->add(' COLLATE %s', $encoding);
+        }
+
+        if($this->isUnsigned())
+        {
+            $query->add(' UNSIGNED');
+        }
+
+        if(!$this->isNullAble())
+        {
+            $query->add(' NOT NULL');
+        }
+
+        if($defaultValue = $this->getDefaultValue())
+        {
+            $query->add(' DEFAULT %s', $this->quoteType($defaultValue));
+        }
+
+        if($this->isAutoIncrement())
+        {
+            $query->add(' AUTO_INCREMENT');
+        }
+
+        return (string) $query;
+    }
+
+    protected function quoteType($value)
+    {
+        if($value === null)
+        {
+            return 'NULL';
+        }
+        else if(is_string($value))
+        {
+            return '\'' . $value . '\'';
+        }
+        else if(is_numeric($value))
+        {
+            return $value;
+        }
+
+        throw new \InvalidArgumentException('Unrecognized value type.');
     }
 
 }

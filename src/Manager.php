@@ -7,6 +7,11 @@ use WCKZ\Generator\FileBuilder;
 class Manager
 {
 
+    public function alterTable($tableName)
+    {
+        return new AlterTable($tableName);
+    }
+
     public function createQuery(Table $table)
     {
         $query = new FileBuilder();
@@ -23,7 +28,7 @@ class Manager
                 $primaryField = $field;
             }
 
-            $query->add('%s', $this->createFieldQuery($field));
+            $query->add('%s', (string) $field);
 
             if($i < $fieldCount - 1 || ($i == $fieldCount - 1 && $primaryField !== null))
             {
@@ -41,57 +46,6 @@ class Manager
         $query->add(')');
 
         return (string) $query;
-    }
-
-    protected function createFieldQuery(Field\Field $field)
-    {
-        $query = new FileBuilder();
-        $query->add('`%s` %s', $field->getName(), $field->getType());
-
-        if($encoding = $field->getEncoding())
-        {
-            $query->add(' COLLATE %s', $encoding);
-        }
-
-        if($field->isUnsigned())
-        {
-            $query->add(' UNSIGNED');
-        }
-
-        if(!$field->isNullAble())
-        {
-            $query->add(' NOT NULL');
-        }
-
-        if($defaultValue = $field->getDefaultValue())
-        {
-            $query->add(' DEFAULT %s', $this->quoteType($defaultValue));
-        }
-
-        if($field->isAutoIncrement())
-        {
-            $query->add(' AUTO_INCREMENT');
-        }
-
-        return (string) $query;
-    }
-
-    protected function quoteType($value)
-    {
-        if($value === null)
-        {
-            return 'NULL';
-        }
-        else if(is_string($value))
-        {
-            return '\'' . $value . '\'';
-        }
-        else if(is_numeric($value))
-        {
-            return $value;
-        }
-
-        throw new \InvalidArgumentException('Unrecognized value type.');
     }
 
 }
