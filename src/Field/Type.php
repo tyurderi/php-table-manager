@@ -20,4 +20,19 @@ class Type
         return new Type\IntType($length);
     }
 
+    public static function text()
+    {
+        return new Type\TextType();
+    }
+
+    public static function mediumText()
+    {
+        return new Type\MediumTextType();
+    }
+
+    public static function tinyInt($length = 2)
+    {
+        return new Type\TinyIntType($length);
+    }
+
 }
